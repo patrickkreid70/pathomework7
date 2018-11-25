@@ -1,8 +1,15 @@
 const emojis = [
   ..."🌵🎄🌲🌳🌴🌱🌿☘🍀🎋🍃🍄🐢🐤🐣🦆🐖🍄🌾💐🌷🌹🥀🌺🐪🐶🐱🐭🐹🐰🦅🦀🦇🐸🐉🌞🌈🌻"
 ];
-const rows = {};
+let rows = {};
 let simpsonsScore;
+let firstRound = true;
+const reset = () => {
+  rows = {};
+  simpsonsScore = undefined;
+  firstRound = true;
+};
+reset();
 const generateRow = chars => {
   const randomChars = chars.sort(() => 0.5 - Math.random());
   return randomChars
@@ -78,19 +85,56 @@ const generateFromTextArea = () => {
   simpsonsScore = simpsonsIndex(textAreaRows);
   document.querySelector("h2").innerText = `SIMPSONS SCORE: ${simpsonsScore}`;
 };
+const handlePushTray = () => {
+  console.log(simpsonsScore);
+  const pushTray = document.querySelector("div#pushtray");
+  if (simpsonsScore < 0.7) {
+    console.log("hello");
+    pushTray.innerText = "URGENT ALERT: THE SCORE IS BELOW .7";
+    return;
+  }
+  pushTray.innerText = "";
+};
 document.addEventListener("DOMContentLoaded", () => {
   console.log("it's loaded baby");
-  const generateButton = document.querySelector("button");
+  const generateButton = document.querySelector("div#intro button");
   const intro = document.querySelector("div#intro");
   const h2dumb = document.createElement("H2");
   h2dumb.innerText = simpsonsScore ? `SIMPSONS SCORE: ${simpsonsScore}` : "";
   intro.appendChild(h2dumb);
   const textArea = document.querySelector("textarea");
+
+  const resetButton = document.createElement("button");
+  resetButton.innerText = "RESET TO BEGINNING";
+  document.body.appendChild(resetButton);
+  resetButton.classList.add("resetButton");
+  textArea.hidden = true;
+
+  if (firstRound) {
+    textArea.hidden = false;
+    resetButton.hidden = true;
+  }
   generateButton.addEventListener("click", () => {
-    if (textArea.value) {
+    textArea.hidden = true;
+    if (textArea.value && firstRound) {
       generateFromTextArea();
+      handlePushTray();
+      textArea.value = "";
+      firstRound = false;
+      resetButton.hidden = false;
       return;
     }
     generateRandom();
+    handlePushTray();
+    firstRound = false;
+    resetButton.hidden = false;
+  });
+  resetButton.addEventListener("click", () => {
+    reset();
+    textArea.hidden = false;
+    document.querySelector("#sim").innerText = "";
+    document.querySelector("#pushtray").innerText = "";
+    h2dumb.innerText = "";
+    resetButton.hidden = true;
   });
 });
