@@ -1,0 +1,14 @@
+{
+  "name": "matthewdavi-homework07",
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": "https://github.com/nyu-csci-ua-0480-001-003-fall-2018/matthewdavi-homework07",
+  "author": "Matthew Davis <maathewdavis@gmail.com>",
+  "license": "MIT",
+  "devDependencies": {
+    "eslint": "^5.8.0",
+    "eslint-config-airbnb-base": "^13.1.0",
+    "eslint-config-prettier": "^3.1.0",
+    "eslint-plugin-import": "^2.14.0"
+  }
+}
