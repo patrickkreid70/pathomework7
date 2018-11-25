@@ -1,0 +1,10 @@
+#sim {
+  border-style: solid;
+  float: left;
+}
+body {
+  background: #aaa;
+}
+.pinned {
+  background: #bbb;
+}

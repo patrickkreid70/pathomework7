@@ -5,10 +5,17 @@
   "repository": "https://github.com/nyu-csci-ua-0480-001-003-fall-2018/matthewdavi-homework07",
   "author": "Matthew Davis <maathewdavis@gmail.com>",
   "license": "MIT",
+  "scripts": {
+    "start": "nodemon src/app.js"
+  },
   "devDependencies": {
     "eslint": "^5.8.0",
     "eslint-config-airbnb-base": "^13.1.0",
     "eslint-config-prettier": "^3.1.0",
-    "eslint-plugin-import": "^2.14.0"
+    "eslint-plugin-import": "^2.14.0",
+    "nodemon": "^1.18.6"
+  },
+  "dependencies": {
+    "express": "^4.16.4"
   }
 }
