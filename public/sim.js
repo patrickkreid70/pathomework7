@@ -65,7 +65,19 @@ const generateRandom = () => {
   document.querySelector("h2").innerText = `SIMPSONS SCORE: ${simpsonsScore}`;
   console.log(rows);
 };
+const generateFromTextArea = () => {
+  const sim = document.querySelector("div#sim");
+  sim.innerHTML = "";
+  const textArea = document.querySelector("textarea");
+  const textAreaRows = textArea.value.split("\n");
+  textAreaRows.forEach((taRow, index) => {
+    rows[index] = { string: taRow };
+    appendNode(sim, "P", taRow, index);
+  });
 
+  simpsonsScore = simpsonsIndex(textAreaRows);
+  document.querySelector("h2").innerText = `SIMPSONS SCORE: ${simpsonsScore}`;
+};
 document.addEventListener("DOMContentLoaded", () => {
   console.log("it's loaded baby");
   const generateButton = document.querySelector("button");
@@ -73,7 +85,12 @@ document.addEventListener("DOMContentLoaded", () => {
   const h2dumb = document.createElement("H2");
   h2dumb.innerText = simpsonsScore ? `SIMPSONS SCORE: ${simpsonsScore}` : "";
   intro.appendChild(h2dumb);
+  const textArea = document.querySelector("textarea");
   generateButton.addEventListener("click", () => {
+    if (textArea.value) {
+      generateFromTextArea();
+      return;
+    }
     generateRandom();
   });
 });
