@@ -1,9 +1,9 @@
 {
-  "name": "matthewdavi-homework07",
+  "name": "pathomework7",
   "version": "1.0.0",
   "main": "index.js",
-  "repository": "https://github.com/nyu-csci-ua-0480-001-003-fall-2018/matthewdavi-homework07",
-  "author": "Matthew Davis <maathewdavis@gmail.com>",
+  "repository": "https://github.com/patrickkreid70/pathomework7.git",
+  "author": "Patrick Reid",
   "license": "MIT",
   "scripts": {
     "start": "nodemon src/app.js"
