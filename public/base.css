@@ -4,6 +4,7 @@
 }
 body {
   background: #aaa;
+  margin-left: 3em;
 }
 .pinned {
   background: #bbb;
@@ -11,7 +12,17 @@ body {
 p:hover {
   background: #bbb;
 }
-
+.forestRow {
+  width: 300px;
+  font-size: 20pt;
+}
+.forestRow:hover {
+  background-color: #bbb;
+  cursor: pointer;
+}
+.button2 {
+  padding: 10px;
+}
 @keyframes pushtraymovie {
   0% {
     transform: rotate(0deg);
@@ -53,4 +64,7 @@ body {
 }
 .resetButton:hover {
   cursor: pointer;
+}
+.hidden {
+  display: none;
 }
